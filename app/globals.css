@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 224 82% 56%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 224 82% 56%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 224 82% 56%;
+    --radius: 0.75rem;
+
+    /* Quadrant colors */
+    --q1: 0 84% 60%; /* Important & Urgent - Red */
+    --q2: 210 100% 56%; /* Important & Not Urgent - Blue */
+    --q3: 38 92% 50%; /* Not Important & Urgent - Amber */
+    --q4: 142 72% 29%; /* Not Important & Not Urgent - Green */
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 224 82% 56%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 224 82% 56%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 224 82% 56%;
+
+    /* Quadrant colors - dark mode */
+    --q1: 0 70% 45%; /* Important & Urgent - Darker Red */
+    --q2: 210 100% 45%; /* Important & Not Urgent - Darker Blue */
+    --q3: 38 92% 40%; /* Not Important & Urgent - Darker Amber */
+    --q4: 142 72% 25%; /* Not Important & Not Urgent - Darker Green */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .dashboard-card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden transition-all duration-200 hover:shadow-md;
+  }
+
+  .dashboard-card-header {
+    @apply p-4 border-b border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/50;
+  }
+
+  .dashboard-card-title {
+    @apply text-lg font-semibold;
+  }
+
+  .dashboard-card-content {
+    @apply p-4;
+  }
+
+  .quadrant-card {
+    @apply rounded-xl shadow-sm border overflow-hidden transition-all duration-200 hover:shadow-md;
+  }
+
+  .q1-card {
+    @apply border-red-400 bg-red-50/50 dark:bg-red-950/20;
+  }
+
+  .q2-card {
+    @apply border-blue-400 bg-blue-50/50 dark:bg-blue-950/20;
+  }
+
+  .q3-card {
+    @apply border-amber-400 bg-amber-50/50 dark:bg-amber-950/20;
+  }
+
+  .q4-card {
+    @apply border-green-400 bg-green-50/50 dark:bg-green-950/20;
+  }
+
+  .task-card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 p-3 transition-all duration-200 hover:shadow-md;
+  }
+
+  .animate-enter {
+    @apply animate-fade-in-up;
+  }
+}
+

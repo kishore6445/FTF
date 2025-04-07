@@ -1,0 +1,112 @@
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
+
+export interface Database {
+  public: {
+    Tables: {
+      goals: {
+        Row: {
+          id: string
+          title: string
+          description: string | null
+          deadline: string | null
+          timeframe: string
+          userId: string
+          createdAt?: string
+          updatedAt?: string
+        }
+        Insert: {
+          id: string
+          title: string
+          description?: string | null
+          deadline?: string | null
+          timeframe: string
+          userId: string
+          createdAt?: string
+          updatedAt?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          description?: string | null
+          deadline?: string | null
+          timeframe?: string
+          userId?: string
+          createdAt?: string
+          updatedAt?: string
+        }
+      }
+      tasks: {
+        Row: {
+          id: string
+          title: string
+          description: string | null
+          quadrant: string
+          roleId: string | null
+          completed: boolean
+          timeSpent: number
+          userId: string
+          createdAt?: string
+          updatedAt?: string
+          dueDate?: string
+          recurrenceId?: string
+          isRitual?: boolean
+          is_big_rock?: boolean
+          priority?: string
+        }
+        Insert: {
+          id: string
+          title: string
+          description?: string | null
+          quadrant: string
+          roleId: string | null
+          completed: boolean
+          timeSpent: number
+          userId: string
+          createdAt?: string
+          updatedAt?: string
+          dueDate?: string
+          recurrenceId?: string
+          isRitual?: boolean
+          is_big_rock?: boolean
+          priority?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          description?: string | null
+          quadrant?: string
+          roleId?: string | null
+          completed?: boolean
+          timeSpent?: number
+          userId?: string
+          createdAt?: string
+          updatedAt?: string
+          dueDate?: string | null
+          recurrenceId?: string | null
+          isRitual?: boolean
+          is_big_rock?: boolean
+          priority?: string
+        }
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
+}
+
