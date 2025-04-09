@@ -250,7 +250,9 @@ export async function getRoles() {
 
 export async function getGoals(): Promise<Goal[]> {
   try {
-    const client = getClientSupabase()
+    //const client = getClientSupabase()
+    const client = createServerComponentClient({ cookies });
+
     const { data: session } = await client.auth.getSession()
 
     if (!session?.session?.user) {
