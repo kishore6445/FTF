@@ -224,8 +224,7 @@ export default function SharpeningTheSaw() {
               <TabsTrigger value="spiritual" className="flex items-center gap-1.5">
                 <Sparkles className="h-4 w-4" />
                 <span>Spiritual</span>
-              </\
-            </TabsTrigger>
+                </TabsTrigger>
           </TabsList>
 
           <TabsContent value="physical">
@@ -442,6 +441,7 @@ export default function SharpeningTheSaw() {
         </Tabs>
       </CardContent>
     </Card>
+    </div>
   )
 }
 
