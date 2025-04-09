@@ -1,4 +1,7 @@
 export interface Task {
+  status: TaskStatus
+  frequency: TaskFrequency
+  isBigRock: boolean
   id: string
   title: string
   description?: string
@@ -18,6 +21,10 @@ export interface Task {
   is_mission_item?: boolean
   ritualDate?: string // Add this field if it doesn't exist and is needed
   priority?: string // Add priority field
+  links?: string; // ✅ Add this line
+  startDate?: string;
+  pomodoroRequired?: number;
+
 }
 
 export interface Subtask {

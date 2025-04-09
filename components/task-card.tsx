@@ -1,7 +1,16 @@
 // ... keep existing imports ...
 
-import { Badge } from "lucide-react";
+import { supabase } from "@/lib/supabase";
+import { Task, Role } from "@/lib/types";
+// import { Badge } from "lucide-react";
+import {Badge} from "@/components/ui/badge";
+ // import { Badge } from "@/components/ui/badge"; // ✅ Adjust this path as per your project
+
+// import { format } from "path";
+import { format } from "date-fns";
+
 import { useState } from "react";
+import { toast } from "sonner";
 
 // Add type definition for RecurrencePattern
 interface RecurrencePattern {
@@ -51,7 +60,17 @@ export default function TaskCard({
   // Update state types for better type safety
   const [editStatus, setEditStatus] = useState<TaskStatus>(task.status as TaskStatus || 'to-do')
   const [editFrequency, setEditFrequency] = useState<TaskFrequency>(task.frequency as TaskFrequency || 'one-time')
-  
+  const [editTitle, setEditTitle] = useState(task.title || "");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [editDescription, setEditDescription] = useState(task.description || "");
+  const [editQuadrant, setEditQuadrant] = useState(task.quadrant || "");
+  const [editRoleId, setEditRoleId] = useState(task.roleId || "");
+  const [editDueDate, setEditDueDate] = useState<Date | null>(task.dueDate ? new Date(task.dueDate) : null);
+const [editStartDate, setEditStartDate] = useState<Date | null>(task.startDate ? new Date(task.startDate) : null);
+const [editPriority, setEditPriority] = useState(task.priority || "");
+const [editLinks, setEditLinks] = useState(task.links || "");
+const [editPomodoroRequired, setEditPomodoroRequired] = useState(task.pomodoroRequired || 1);
+
   // Fix the property naming inconsistency
   const [editIsBigRock, setEditIsBigRock] = useState(task.isBigRock || false)
   const [editIsRitual, setEditIsRitual] = useState(task.isRitual || false)
@@ -60,11 +79,12 @@ export default function TaskCard({
 
   const handleSaveEdit = async () => {
     if (!editTitle.trim()) {
-      toast({
-        title: "Error",
-        description: "Task title cannot be empty",
-        variant: "destructive",
-      })
+      toast.error("Task title cannot be empty");
+      // OR
+      toast("Task title cannot be empty", {
+        description: "Please enter a title before saving.",
+      });
+      
       return
     }
 
@@ -112,6 +132,9 @@ export default function TaskCard({
 
       onUpdate(updatedTask)
       // ... keep rest of the function ...
+    }
+    catch{
+      
     }
   }
 
