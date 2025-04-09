@@ -98,8 +98,10 @@ export async function getTasks(): Promise<Task[]> {
 
 export async function getRoles() {
   try {
-    const client = getClientSupabase()
-    debugger;
+   // const client = getClientSupabase()
+
+    const client = createServerComponentClient({ cookies })
+    debugger
     console.log(client);
     const { data: session } = await client.auth.getSession()
     console.log("Session is");

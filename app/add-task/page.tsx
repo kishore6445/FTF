@@ -16,7 +16,7 @@ export default function AddTaskPage() {
 }
 
 async function AddTaskContent() {
-  //const roles = await getRoles()
+  const roles = await getRoles()
 
   //console.log("Fetched roles:", roles)
 
@@ -26,9 +26,9 @@ async function AddTaskContent() {
         <CardTitle>Add New Task</CardTitle>
       </CardHeader>
       <CardContent>
-        {/* <TasksProvider>
+        <TasksProvider>
           <SimplifiedTaskForm roles={roles} />
-        </TasksProvider> */}
+        </TasksProvider>
       </CardContent>
     </Card>
   )
