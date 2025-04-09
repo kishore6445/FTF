@@ -191,7 +191,9 @@ export async function getRoles() {
 
     // Check if we have a session and can try a simpler query
     try {
-      const client = getClientSupabase()
+      //const client = getClientSupabase()
+      const client = createServerComponentClient({ cookies })
+
       const { data: session } = await client.auth.getSession()
 
       if (session?.session?.user) {
