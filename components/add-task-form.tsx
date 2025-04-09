@@ -602,7 +602,7 @@ export default function AddTaskForm({
               <div>
                 <h3 className="text-sm font-medium mb-2">Subtasks</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Break down your task into smaller, manageable steps
+                    Break down your task into smaller, manageable steps
                 </p>
               </div>
               <SubtaskManager subtasks={subtasks} onChange={setSubtasks} />
