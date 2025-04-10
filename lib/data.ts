@@ -8,8 +8,8 @@ import { cookies } from "next/headers"
 
 export async function getTasks(): Promise<Task[]> {
   try {
-    const client = createBrowserSupabaseClient();
-    //const client = createServerComponentClient({ cookies })
+   // const client = createBrowserSupabaseClient();
+    const client = createServerComponentClient({ cookies })
 
 
    // const client = getClientSupabase()
@@ -99,9 +99,9 @@ export async function getTasks(): Promise<Task[]> {
 export async function getRoles() {
   try {
    // const client = getClientSupabase()
-   const client = createBrowserSupabaseClient()
+   //const client = createBrowserSupabaseClient()
 
-   // const client = createServerComponentClient({ cookies })
+   const client = createServerComponentClient({ cookies })
     debugger
     console.log(client);
     const { data: session } = await client.auth.getSession()
@@ -331,9 +331,9 @@ export async function getBigRocks(): Promise<Task[]> {
   try {
    // const client = getClientSupabase()
 
-   const client = createBrowserSupabaseClient()
+   //const client = createBrowserSupabaseClient()
 
-    //const client = createServerComponentClient({ cookies })
+    const client = createServerComponentClient({ cookies })
 
     const { data: session } = await client.auth.getSession()
 

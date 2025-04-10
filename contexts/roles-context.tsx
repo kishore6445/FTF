@@ -90,7 +90,6 @@ export function RolesProvider({ children }: { children: ReactNode }) {
       if (typeof window === "undefined") {
         throw new Error("Not in browser environment")
       }
-      client
       // Add a timeout to the fetch operation
       // const fetchPromise = supabase
       //   .from("roles")
