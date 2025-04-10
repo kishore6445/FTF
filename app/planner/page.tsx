@@ -11,6 +11,8 @@ import { Calendar } from "@/components/ui/calendar"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { format, startOfWeek, addDays, isSameDay } from "date-fns"
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+import { cookies } from "next/headers"
 
 export default function PlannerPage() {
   const { user } = useAuth()
@@ -21,13 +23,15 @@ export default function PlannerPage() {
   const [selectedDay, setSelectedDay] = useState<Date>(new Date())
   const [weekTheme, setWeekTheme] = useState("Focus on high-impact Q2 activities")
 
+  const client = createServerComponentClient({ cookies })
+
   useEffect(() => {
     if (!user) return
 
     async function fetchTasks() {
       setIsLoading(true)
       try {
-        const { data, error } = await supabase
+        const { data, error } = await client
           .from("tasks")
           .select("*")
           .eq("user_id", user.id)
