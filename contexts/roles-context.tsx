@@ -58,7 +58,8 @@ export function RolesProvider({ children }: { children: ReactNode }) {
   const { toast } = useToast()
   const [fetchAttempts, setFetchAttempts] = useState(0)
   const MAX_FETCH_ATTEMPTS = 3
-  const client = createServerComponentClient({ cookies })
+  //const client = createServerComponentClient({ cookies })
+  const supabase = createBrowserSupabaseClient()
 
   useEffect(() => {
     // Only try to fetch roles if we have a user and we're in a browser environment
@@ -97,7 +98,7 @@ export function RolesProvider({ children }: { children: ReactNode }) {
       //   .eq("user_id", user.id)
       //   .order("created_at", { ascending: false })
 
-      const fetchPromise = client
+      const fetchPromise = supabase
       .from("roles")
       .select("*")
       .eq("user_id", user.id)
