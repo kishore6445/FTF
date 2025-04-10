@@ -1,4 +1,4 @@
-"use client"
+//"use client"
 
 import { useState, useEffect } from "react"
 import { Loader2, Clock, ArrowRight, Plus, CalendarIcon, Target, Compass, BookOpen } from "lucide-react"
