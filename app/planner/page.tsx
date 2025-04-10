@@ -11,8 +11,8 @@ import { Calendar } from "@/components/ui/calendar"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { format, startOfWeek, addDays, isSameDay } from "date-fns"
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 
 export default function PlannerPage() {
   const { user } = useAuth()
