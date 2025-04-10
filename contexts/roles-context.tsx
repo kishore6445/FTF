@@ -6,6 +6,9 @@ import { supabase } from "@/lib/supabase"
 import { useAuth } from "@/contexts/auth-context"
 import type { Role } from "@/lib/types"
 import { useToast } from "@/components/ui/use-toast"
+import { createBrowserSupabaseClient, createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+import { cookies } from "next/headers"
+
 
 interface RolesContextType {
   roles: Role[]
@@ -55,6 +58,7 @@ export function RolesProvider({ children }: { children: ReactNode }) {
   const { toast } = useToast()
   const [fetchAttempts, setFetchAttempts] = useState(0)
   const MAX_FETCH_ATTEMPTS = 3
+  const client = createServerComponentClient({ cookies })
 
   useEffect(() => {
     // Only try to fetch roles if we have a user and we're in a browser environment
@@ -85,13 +89,19 @@ export function RolesProvider({ children }: { children: ReactNode }) {
       if (typeof window === "undefined") {
         throw new Error("Not in browser environment")
       }
-
+      client
       // Add a timeout to the fetch operation
-      const fetchPromise = supabase
-        .from("roles")
-        .select("*")
-        .eq("user_id", user.id)
-        .order("created_at", { ascending: false })
+      // const fetchPromise = supabase
+      //   .from("roles")
+      //   .select("*")
+      //   .eq("user_id", user.id)
+      //   .order("created_at", { ascending: false })
+
+      const fetchPromise = client
+      .from("roles")
+      .select("*")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false })
 
       // Create a timeout promise
       const timeoutPromise = new Promise((_, reject) => {

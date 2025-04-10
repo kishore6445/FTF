@@ -99,7 +99,7 @@ export async function getTasks(): Promise<Task[]> {
 export async function getRoles() {
   try {
    // const client = getClientSupabase()
-
+   
     const client = createServerComponentClient({ cookies })
     debugger
     console.log(client);

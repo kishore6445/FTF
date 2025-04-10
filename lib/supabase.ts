@@ -13,11 +13,12 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.error("Missing Supabase environment variables. Check your .env file.")
 }
 
-// Create a Supabase client for use in browser components
+//Create a Supabase client for use in browser components
 export const supabase = createClientComponentClient<Database>({
   supabaseUrl: supabaseUrl || "",
   supabaseKey: supabaseAnonKey || "",
 })
+
 
 // Function to generate a valid UUID v4
 export function uuidv4() {
@@ -105,6 +106,7 @@ export const checkSupabaseConnection = async (retryCount = 0, maxRetries = 3) =>
     }
   }
 }
+
 
 // Simplified database setup function
 export const setupDatabase = async () => {

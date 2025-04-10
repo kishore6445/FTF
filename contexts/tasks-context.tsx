@@ -6,6 +6,8 @@ import { supabase } from "@/lib/supabase"
 import { useAuth } from "@/contexts/auth-context"
 import type { Task, Role } from "@/lib/types"
 import { useToast } from "@/components/ui/use-toast"
+import { cookies } from "next/headers"
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 
 interface TasksContextType {
   tasks: Task[]
@@ -46,6 +48,8 @@ export function TasksProvider({
   const { user } = useAuth()
   const { toast } = useToast()
 
+  const client = createServerComponentClient({ cookies })
+
   useEffect(() => {
     if (user && initialTasks.length === 0 && !initialTasksSet) {
       fetchTasks()
@@ -76,7 +80,7 @@ export function TasksProvider({
       }
 
       // Attempt to fetch from Supabase
-      const { data, error } = await supabase
+      const { data, error } = await client
         .from("tasks")
         .select("*")
         .eq("user_id", user.id)
