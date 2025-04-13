@@ -23,8 +23,8 @@ export default function PlannerPage() {
   const [selectedDay, setSelectedDay] = useState<Date>(new Date())
   const [weekTheme, setWeekTheme] = useState("Focus on high-impact Q2 activities")
 
-  const client = createServerComponentClient({ cookies })
-  //const supabase = createBrowserSupabaseClient()
+  //const client = createServerComponentClient({ cookies })
+  const supabase = createBrowserSupabaseClient()
 
   useEffect(() => {
     if (!user) return
@@ -32,7 +32,7 @@ export default function PlannerPage() {
     async function fetchTasks() {
       setIsLoading(true)
       try {
-        const { data, error } = await client
+        const { data, error } = await supabase
           .from("tasks")
           .select("*")
           .eq("user_id", user.id)
