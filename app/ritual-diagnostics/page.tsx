@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import RitualDiagnosticTool from "@/components/ritual-diagnostic-tool"
 
 export default function RitualDiagnosticsPage() {
