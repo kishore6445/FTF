@@ -1,4 +1,5 @@
 "use client"
+export const dynamic = "force-dynamic";
 
 // Since the existing code was omitted for brevity and the updates indicate undeclared variables,
 // I will assume the variables are used within the TaskForm component and are likely missing from the import statement or not declared within the component's scope.
