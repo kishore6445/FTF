@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+
+
 import RitualStreakDashboard from "@/components/ritual-streak-dashboard"
 
 export default function RitualStreaksPage() {
