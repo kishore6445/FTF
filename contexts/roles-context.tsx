@@ -1,4 +1,5 @@
 "use client"
+export const dynamic = "force-dynamic";
 
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 import { v4 as uuidv4 } from "uuid"
