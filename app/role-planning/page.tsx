@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import RolePlanning from "@/components/role-planning"
 
 export default function RolePlanningPage() {
