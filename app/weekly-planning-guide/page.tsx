@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import WeeklyPlanningGuide from "@/components/weekly-planning-guide"
 
 export default function WeeklyPlanningGuidePage() {

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { TimeTrackingDashboard } from "@/components/time-tracking-dashboard"
 
 export default function TimeTrackingPage() {

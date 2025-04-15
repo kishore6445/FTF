@@ -1,3 +1,6 @@
+
+export const dynamic = "force-dynamic";
+
 import SimpleRitualTracker from "@/components/simple-ritual-tracker"
 
 export default function SimpleRitualsPage() {
