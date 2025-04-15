@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+
+
 import { CardDescription } from "@/components/ui/card"
 import type { Metadata } from "next"
 import PersonalMissionStatement from "@/components/personal-mission-statement"
